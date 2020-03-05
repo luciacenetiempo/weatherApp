@@ -46,7 +46,7 @@ function pushCurrentLocation(position){
         fetch(locationUrl).then(
             function(res){
                 res.json().then(
-                    data => {
+                    function(data){
                         var currentLocation = [
                             {
                                 city : data.locality,
