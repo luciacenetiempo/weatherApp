@@ -44,20 +44,23 @@ function pushCurrentLocation(position){
         var long = position.coords.longitude;
         var locationUrl = 'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude='+lat+'&longitude='+long+'&localityLanguage=en';
         fetch(locationUrl).then(
-            res => res.json().then(
-                data => {
-                    var currentLocation = [
-                        {
-                            city : data.locality,
-                            lat : lat,
-                            long : long,
-                            image : 'assets/img/default.jpg'
-                        }
-                    ]
-                    var newLocationsList = currentLocation.concat(locations);
-                    setMeteoCard(newLocationsList);
-                }
-            )
+            function(res){
+                res.json().then(
+                    data => {
+                        var currentLocation = [
+                            {
+                                city : data.locality,
+                                lat : lat,
+                                long : long,
+                                image : 'assets/img/default.jpg'
+                            }
+                        ]
+                        var newLocationsList = currentLocation.concat(locations);
+                        setMeteoCard(newLocationsList);
+                    }
+                )
+            }
+
         ).catch(function() {
             var newLocationsList = locations;
             setMeteoCard(newLocationsList);
