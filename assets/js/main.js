@@ -5,7 +5,6 @@ if (navigator.geolocation) {
 }
 console.log()
 document.getElementsByTagName('body')[0].style.height = window.innerHeight + 'px';
-alert(window.innerHeight);
 
 function locationError(error){
     pushCurrentLocation('');
