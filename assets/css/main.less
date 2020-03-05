@@ -30,6 +30,8 @@ body{
     background-color: #f8f8f8;
     font-size: 12px;
     color: white;
+    position: relative;
+    height: 100vh;
     .regular;
     @media screen and @desktop {
         font-size: 17px;
@@ -37,18 +39,23 @@ body{
 }
 .weatherApp{
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     overflow: hidden;
     opacity: 0;
+    position: relative;
+    &__wrapper{
+        height: 100%;
+    }
     &__visible{
         opacity: 1;
+        -webkit-transition: all .2s;
         transition: all .2s;
 
     }
     &__card{
         position: relative;
         width: 100vw;
-        height: 100vh;
+        height: 100%;
         background-size: cover;
         background-position: center;
         overflow: hidden;
@@ -78,7 +85,7 @@ body{
             -webkit-box-align: center;
                     align-items: center;
             width: 100vw;
-            height: 100vh;
+            height: 100%;
             padding-top: 7vh;
             &__row{
                 display: -webkit-box;
@@ -242,72 +249,6 @@ body{
                 }
             }
         }
-        &__addLocation{
-            &__search{
-                display: none;
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                background-color:rgba(0, 0, 0, 0.61) ;
-                -webkit-box-pack: center;
-                        justify-content: center;
-                -webkit-box-align: center;
-                        align-items: center;
-                &__row{
-                    width: 100%;
-                    padding: 20px;
-                    max-width: 1000px;
-                    display: -webkit-box;
-                    display: flex;
-                    -webkit-box-pack: center;
-                            justify-content: center;
-                    -webkit-box-align: center;
-                            align-items: center;
-                    -webkit-box-orient: vertical;
-                    -webkit-box-direction: normal;
-                            flex-flow: column;
-                    h1{
-                        .light;
-                        font-size: 2.5em;
-                        margin-bottom: 5vh;
-                    }
-                    input{
-                        .light;
-                        border: 0;
-                        padding: 20px 25px;
-                        font-size: 2em;
-                        text-align: center;
-                        background:#fff;
-                        box-shadow: 0 16px 24px rgba(0,0,0,.2);
-                        border-radius: 6px;
-                        &::-webkit-input-placeholder { /* Edge */
-                            color: #000000;
-                        }
-                          
-                        &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-                            color: #000000;
-                        }
-                          
-                        &::-moz-placeholder {
-                            color: #000000;
-                        }
-                          
-                        &::-ms-input-placeholder {
-                            color: #000000;
-                        }
-                          
-                        &::placeholder {
-                            color: #000000;
-                        }
-                        &.la{
-                            color: #000000;
-                        }
-                    }
-                }
-            }
-        }
         &__pagination{
             position: relative;
             display: -webkit-box;
@@ -341,7 +282,7 @@ body{
         position: fixed;
         top: 0;
         left: 0;
-        height: 100vh;
+        height: 100%;
         width: 100vw;
         background: rgba(0, 0, 0, 0.58);
         -webkit-box-orient: vertical;
@@ -467,13 +408,16 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     background: rgba(0, 92, 211, 0.51);
     z-index: 1000;
+    display: -webkit-box;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+            align-items: center;
 }
 .loader {
     border: 16px solid #f3f3f3;

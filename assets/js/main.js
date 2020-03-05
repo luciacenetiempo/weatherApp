@@ -3,6 +3,9 @@ if (navigator.geolocation) {
 } else { 
     pushCurrentLocation('');
 }
+console.log()
+document.getElementsByTagName('body')[0].style.height = window.innerHeight + 'px';
+
 function locationError(error){
     pushCurrentLocation('');
 };
