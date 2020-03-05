@@ -193,9 +193,7 @@ function createCarousel(results){
         keyboard: {
             enabled: true,
         },
-        pagination: {
-          el: '.swiper-pagination',
-        },
+        pagination: { el: '.swiper-pagination', clickable: true },
         virtual: {
             slides: (
                 function () {
