@@ -1,0 +1,626 @@
+/*RESET*/
+@import url('https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css');
+@import url('https://unpkg.com/swiper/css/swiper.min.css');
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+/*IMPORT & VAR*/
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Lato Light'), local('Lato-Light'), url(https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh7USSwiPHA.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Lato Regular'), local('Lato-Regular'), url(https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWw.ttf) format('truetype');
+}
+body {
+  background-color: #f8f8f8;
+  font-size: 12px;
+  color: white;
+  font-family: 'Lato';
+  font-weight: 400;
+  font-style: normal;
+}
+@media screen and (min-width: 1023px) {
+  body {
+    font-size: 17px;
+  }
+}
+.weatherApp {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0;
+}
+.weatherApp__visible {
+  opacity: 1;
+  transition: all 0.2s;
+}
+.weatherApp__card {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  padding: 60px 0;
+}
+.weatherApp__card::before {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #2a2c3a;
+  opacity: 0.4;
+  pointer-events: none;
+}
+.weatherApp__card__content {
+  position: relative;
+  z-index: 2;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-flow: column;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  padding-top: 7vh;
+}
+.weatherApp__card__content__row {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-flow: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.weatherApp__card .today {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-flow: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-bottom: 5vh;
+  opacity: 0;
+}
+.weatherApp__card .today h1 {
+  font-size: 1.6em;
+}
+.weatherApp__card .today__extended {
+  margin: 20px 0;
+  font-size: 1.5em;
+}
+.weatherApp__card .today__condition {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: normal;
+}
+.weatherApp__card .today__temp {
+  font-size: 8.8em;
+  line-height: 0.8;
+  display: -webkit-box;
+  display: flex;
+  margin: 10px;
+}
+.weatherApp__card .today__temp sup {
+  font-size: 0.4em;
+  margin-top: 3%;
+}
+.weatherApp__card .today__minmax {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.2em;
+}
+.weatherApp__card .week {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  -webkit-box-align: center;
+  align-items: center;
+  padding-bottom: 120px;
+}
+.weatherApp__card .week__day {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-flow: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 5px;
+  margin: 0 2px;
+  opacity: 0;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+@media screen and (min-width: 1023px) {
+  .weatherApp__card .week__day {
+    padding: 10px 10px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+}
+.weatherApp__card .week__day__condition .las {
+  font-size: 3.3em;
+}
+@media screen and (min-width: 1023px) {
+  .weatherApp__card .week__day__condition .las {
+    font-size: 6em;
+  }
+}
+.weatherApp__card .week__day__minmax {
+  font-size: 0.8em;
+}
+.weatherApp__card .week__day:hover {
+  background: rgba(255, 255, 255, 0.36);
+  border-radius: 10px;
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+}
+.weatherApp__card .week__day .details {
+  display: none;
+}
+.weatherApp #wave {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 3;
+  height: 40vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  pointer-events: none;
+}
+.weatherApp__wave {
+  position: absolute;
+  width: 100%;
+  height: 40vh;
+  background-position: center bottom;
+  background-repeat: repeat-x;
+  background-size: auto 101%;
+}
+.weatherApp__wave--one {
+  background-image: url('../img/wave.svg');
+  opacity: 0.5;
+}
+.weatherApp__wave--two {
+  background-image: url('../img/wave-2.svg');
+  opacity: 0.5;
+}
+.weatherApp__controller {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 15px 20px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 100%;
+  z-index: 4;
+}
+@media screen and (min-width: 1023px) {
+  .weatherApp__controller {
+    padding: 25px 30px;
+  }
+}
+.weatherApp__controller__addLocation,
+.weatherApp__controller__addToPhone {
+  cursor: pointer;
+}
+.weatherApp__controller__addLocation .la,
+.weatherApp__controller__addToPhone .la {
+  font-size: 2.2em;
+}
+.weatherApp__controller__addLocation img,
+.weatherApp__controller__addToPhone img {
+  width: 20px;
+}
+@media screen and (min-width: 1023px) {
+  .weatherApp__controller__addLocation img,
+  .weatherApp__controller__addToPhone img {
+    width: 30px;
+  }
+}
+.weatherApp__controller__addLocation__search {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.61);
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.weatherApp__controller__addLocation__search__row {
+  width: 100%;
+  padding: 20px;
+  max-width: 1000px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-flow: column;
+}
+.weatherApp__controller__addLocation__search__row h1 {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: normal;
+  font-size: 2.5em;
+  margin-bottom: 5vh;
+}
+.weatherApp__controller__addLocation__search__row input {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: normal;
+  border: 0;
+  padding: 20px 25px;
+  font-size: 2em;
+  text-align: center;
+  background: #fff;
+  box-shadow: 0 16px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+.weatherApp__controller__addLocation__search__row input::-webkit-input-placeholder {
+  /* Edge */
+  color: #000000;
+}
+.weatherApp__controller__addLocation__search__row input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: #000000;
+}
+.weatherApp__controller__addLocation__search__row input::-moz-placeholder {
+  color: #000000;
+}
+.weatherApp__controller__addLocation__search__row input::-ms-input-placeholder {
+  color: #000000;
+}
+.weatherApp__controller__addLocation__search__row input::placeholder {
+  color: #000000;
+}
+.weatherApp__controller__addLocation__search__row input.la {
+  color: #000000;
+}
+.weatherApp__controller__pagination {
+  position: relative;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.weatherApp__controller__pagination .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  margin: 0 3px;
+  border-radius: 100%;
+  background: transparent;
+  border: 1px solid white;
+  opacity: 1;
+}
+@media screen and (min-width: 1023px) {
+  .weatherApp__controller__pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+  }
+}
+.weatherApp__controller__pagination .swiper-pagination-bullet-active {
+  background: white;
+}
+.weatherApp #details {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.58);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-flow: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  z-index: 1000;
+}
+.weatherApp #details .details {
+  max-width: 90vw;
+  background-color: white;
+  color: black;
+  display: -webkit-box;
+  display: flex;
+  padding: 20px;
+  position: relative;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.weatherApp #details .details * {
+  pointer-events: none;
+}
+.weatherApp #details .details__col {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-flow: column;
+  -webkit-box-pack: center;
+  justify-content: center;
+  padding: 15px;
+}
+.weatherApp #details .details__col__row {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+}
+.weatherApp #details .details.visible {
+  display: -webkit-box;
+  display: flex;
+}
+.weatherApp #details .details h2 {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: normal;
+  font-size: 0.8em;
+  color: #404040;
+  margin-bottom: 10px;
+}
+.weatherApp #details .details__date {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1em;
+  color: #404040;
+}
+.weatherApp #details .details__icon {
+  font-size: 7em;
+  color: #005CD3;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.weatherApp #details .details__icon .las {
+  height: 100px;
+}
+.weatherApp #details .details__minmax {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: normal;
+  font-size: 0.8em;
+}
+.weatherApp #details .details__summary {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: normal;
+  font-size: 0.8em;
+  color: #005CD3;
+}
+.weatherApp #details .details__timing {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-style: normal;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.weatherApp #details .details__timing--col {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  flex-flow: row;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 10px 20px 10px 0;
+  color: #404040;
+  font-size: 0.8em;
+}
+.weatherApp #details .details__timing--col .las {
+  font-size: 2em;
+  color: #cccccc;
+  margin-right: 5px;
+}
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 92, 211, 0.51);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #005CD3;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes animateWave {
+  0% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+@keyframes animateWave {
+  0% {
+    -webkit-transform: scale(1, 0);
+    transform: scale(1, 0);
+  }
+  100% {
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+.noPointer {
+  pointer-events: none;
+}
