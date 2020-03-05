@@ -224,6 +224,12 @@ body{
         background-position: center bottom;
         background-repeat: repeat-x;
         background-size: auto 101%;
+        @media screen and @tablet {
+            height: 41vh;
+        }
+        @media screen and @desktop {
+            height: 40vh;
+        }
         &--one{
             background-image: url('../img/wave.svg');
             opacity: 0.5;
@@ -250,18 +256,6 @@ body{
         @media screen and @desktop {
             padding: 25px 30px;
         }
-        &__addLocation,&__addToPhone{
-            cursor: pointer;
-            .la{
-                font-size:2.2em;
-            }
-            img{
-                width: 20px;
-                @media screen and @desktop {
-                    width: 30px;
-                }
-            }
-        }
         &__pagination{
             position: relative;
             display: -webkit-box;
@@ -279,7 +273,7 @@ body{
                 background: transparent;
                 border: 1px solid white;
                 opacity: 1;
-                @media screen and @desktop {
+                @media screen and @tablet {
                     width: 12px;
                     height: 12px;
                     margin: 0 6px;

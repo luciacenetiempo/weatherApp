@@ -325,6 +325,16 @@ body {
   background-repeat: repeat-x;
   background-size: auto 101%;
 }
+@media screen and (min-width: 768px) {
+  .weatherApp__wave {
+    height: 41vh;
+  }
+}
+@media screen and (min-width: 1023px) {
+  .weatherApp__wave {
+    height: 40vh;
+  }
+}
 .weatherApp__wave--one {
   background-image: url('../img/wave.svg');
   opacity: 0.5;
@@ -353,24 +363,6 @@ body {
     padding: 25px 30px;
   }
 }
-.weatherApp__controller__addLocation,
-.weatherApp__controller__addToPhone {
-  cursor: pointer;
-}
-.weatherApp__controller__addLocation .la,
-.weatherApp__controller__addToPhone .la {
-  font-size: 2.2em;
-}
-.weatherApp__controller__addLocation img,
-.weatherApp__controller__addToPhone img {
-  width: 20px;
-}
-@media screen and (min-width: 1023px) {
-  .weatherApp__controller__addLocation img,
-  .weatherApp__controller__addToPhone img {
-    width: 30px;
-  }
-}
 .weatherApp__controller__pagination {
   position: relative;
   display: -webkit-box;
@@ -390,7 +382,7 @@ body {
   border: 1px solid white;
   opacity: 1;
 }
-@media screen and (min-width: 1023px) {
+@media screen and (min-width: 768px) {
   .weatherApp__controller__pagination .swiper-pagination-bullet {
     width: 12px;
     height: 12px;
