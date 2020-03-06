@@ -193,6 +193,7 @@ function createCarousel(results){
         slidesPerView: 1,
         observer: true,
         observeParents: true,
+        updateOnWindowResize: true,
         keyboard: {
             enabled: true,
         },
