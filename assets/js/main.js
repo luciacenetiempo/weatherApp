@@ -282,8 +282,7 @@ function createCarousel(results){
 
             },
             setTranslate(translate) {
-                console.log('setTranslate')
-                document.getElementById('wave').style.transform = 'translate3d('+translate+'px, 0, 0)';
+                document.getElementById('wave').style.transform = 'translate3d('+translate.previousTranslate+'px, 0, 0)';
             },
             slideChangeTransitionEnd(){
                 showDetails();
